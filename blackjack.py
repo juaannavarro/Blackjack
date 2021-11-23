@@ -14,6 +14,11 @@ cartas={
     chr(0x1f0ae):10 
 } 
 
+import random
+def dameCarta(lista):
+    carta=random.choice(lista)
+    valor=cartas.get(carta)
+    return carta, valor
 
 print("valor de cada carta")
 print(cartas)
@@ -22,3 +27,20 @@ listaCartas=list(cartas.keys())
 
 print("lista entera de cartas")
 print(listaCartas)
+
+valorCartasJugador = 0
+primeraVez=True
+while True:
+    jugar = input("Quiere carta S/N: ")
+    if (jugar == "S" or jugar == "s"):
+        if primeraVez == True:
+            carta, valor = dameCarta(listaCartas)
+            valorCartasJugador = valorCartasJugador + valor
+            print("Ha salido la carta: ", carta, " valor: ", valor, " valorAcumulado: ", valorCartasJugador)
+            primeraVez = False
+        carta, valor = dameCarta(listaCartas)
+        valorCartasJugador = valorCartasJugador + valor
+        print("Ha salido la carta: ", carta, " valor: ", valor, " valorAcumulado: ", valorCartasJugador)
+    else:
+        print("ValorCartasJugador: ", valorCartasJugador)
+        break
