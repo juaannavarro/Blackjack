@@ -14,4 +14,11 @@ cartas={
     chr(0x1f0ae):10 
 } 
 
+
+print("valor de cada carta")
 print(cartas)
+
+listaCartas=list(cartas.keys())
+
+print("lista entera de cartas")
+print(listaCartas)
