@@ -28,7 +28,8 @@ listaCartas=list(cartas.keys())
 print("lista entera de cartas")
 print(listaCartas)
 
-valorCartasJugador = 0
+valorCartasBanca=0
+valorCartasJugador=0
 primeraVez=True
 while True:
     jugar = input("Quiere carta S/N: ")
@@ -41,6 +42,30 @@ while True:
         carta, valor = dameCarta(listaCartas)
         valorCartasJugador = valorCartasJugador + valor
         print("Ha salido la carta: ", carta, " valor: ", valor, " valorAcumulado: ", valorCartasJugador)
+        if valorCartasJugador>21:
+            print("ha perdido")
+            break
+    
     else:
         print("ValorCartasJugador: ", valorCartasJugador)
+        if valorCartasJugador>21:
+            print("ha perdido")   
+        else:
+            primeraVez = True
+            while valorCartasBanca < 17:
+                if primeraVez == True:
+                    carta, valor = dameCarta(listaCartas)
+                    valorCartasBanca = valorCartasBanca + valor
+                    print("Ha salido la carta: ", carta, " valor: ", valor, " valorAcumuladoBanca: ", valorCartasBanca)
+                    primeraVez = False
+                carta, valor = dameCarta(listaCartas)
+                valorCartasBanca = valorCartasBanca + valor
+                print("Ha salido la carta: ", carta, " valor: ", valor, " valorAcumuladoBanca: ", valorCartasBanca)
+            if valorCartasBanca > 21:
+                print("Ha ganado el jugador")
+            elif valorCartasJugador >= valorCartasBanca:
+                print("Ha ganado el jugador")
+            else:
+                print("Ha ganado la banca")
+        
         break
